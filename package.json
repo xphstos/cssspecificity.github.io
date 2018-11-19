@@ -1,0 +1,15 @@
+{
+  "name": "cssspecificity",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/xphstos/cssspecificity.github.io.git",
+  "author": "Chris Gotsikas <chris@holy.gd>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "rm -rf ./dist && parcel -p 3000 watch src/index.html",
+    "build": "rm -rf ./dist && parcel build src/index.html"
+  },
+  "devDependencies": {
+    "sass": "^1.15.1"
+  }
+}
