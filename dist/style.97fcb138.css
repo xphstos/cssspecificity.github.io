@@ -59,6 +59,11 @@ body {
   height: 100%;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /*=====  End of Browser reset  ======*/
 body {
   background-color: var(--background-dark);
