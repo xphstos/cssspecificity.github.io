@@ -34,7 +34,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  outline: 1px solid red;
+  // outline: 1px solid red;
 }
 
 html {
@@ -68,19 +68,49 @@ a {
 body {
   background-color: var(--background-dark);
   color: var(--text-dark);
+
+  // @supports (-moz-appearance: meterbar) {
+  //   overflow-x: hidden;
+  // }
 }
+
+/*=============================================
+=                  Container                  =
+=============================================*/
 
 .container {
   margin: 0 auto;
   margin-bottom: calc(var(--grid-base) * 9);
+  padding: 0 1rem;
+  max-width: calc(var(--grid-max-width) + 2rem);
 
-  &--main {
-    padding: 0 1rem;
-    max-width: calc(var(--grid-max-width) + 2rem);
+  &--grid {
+    display: grid;
   }
 }
 
-.page-title {
-  font-size: 72px;
-  line-height: 0.9;
+/*=====  End of Container  ======*/
+
+.header {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas: "header definition";
+    grid-gap: 5em;
+  }
+
+  &-title {
+    font-size: 4.5em;
+    grid-area: header;
+
+    .css,
+    .specificity {
+      display: block;
+    }
+  }
+
+  &-description {
+    margin-top: 96px;
+    grid-area: definition;
+  }
 }

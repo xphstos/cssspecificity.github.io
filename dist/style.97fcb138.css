@@ -29,7 +29,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  outline: 1px solid red;
 }
 
 html {
@@ -70,16 +69,35 @@ body {
   color: var(--text-dark);
 }
 
+/*=============================================
+=                  Container                  =
+=============================================*/
 .container {
   margin: 0 auto;
   margin-bottom: calc(var(--grid-base) * 9);
-}
-.container--main {
   padding: 0 1rem;
   max-width: calc(var(--grid-max-width) + 2rem);
 }
+.container--grid {
+  display: grid;
+}
 
-.page-title {
-  font-size: 72px;
-  line-height: 0.9;
+/*=====  End of Container  ======*/
+.header .container {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas: "header definition";
+  grid-gap: 5em;
+}
+.header-title {
+  font-size: 4.5em;
+  grid-area: header;
+}
+.header-title .css,
+.header-title .specificity {
+  display: block;
+}
+.header-description {
+  margin-top: 96px;
+  grid-area: definition;
 }

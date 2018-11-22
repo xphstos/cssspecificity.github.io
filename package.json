@@ -6,10 +6,11 @@
   "author": "Chris Gotsikas <chris@holy.gd>",
   "license": "MIT",
   "scripts": {
-    "dev": "rm -rf ./dist && parcel -p 3000 watch src/index.html",
-    "build": "rm -rf ./dist && parcel build src/index.html"
+    "dev": "parcel -p 3000 watch src/index.html",
+    "build": "parcel build src/index.html"
   },
   "devDependencies": {
+    "parcel-bundler": "^1.10.3",
     "sass": "^1.15.1"
   }
 }
