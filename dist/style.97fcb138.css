@@ -2,23 +2,27 @@
 =                 Variables                  =
 =============================================*/
 :root {
-  --background-dark: #1a1a1a;
-  --text-dark: #ffffff;
-  --text-light-muted-dark: #bfbfbf;
-  --text-heavy-muted-dark: #4d4d4d;
-  --code-neutral-dark: #bfbfbf;
-  --code-muted-dark: #666666;
-  --code-c-dark: #f2b661;
-  --code-e-dark: #d96c57;
-  --code-p-dark: #d96c57;
-  --code-v-dark: #f2b661;
-  --code-id-dark: #4c9dbf;
-  --code-i-dark: #b64cbf;
+  --c-black: #191919;
+  --c-dark: #333333;
+  --c-dark-grey: #4d4d4d;
+  --c-grey: #808080;
+  --c-white: #ffffff;
+  --c-class: #f2b661;
+  --c-element: #d96c57;
+  --c-property: #4cbf99;
+  --c-value: #f2b661;
+  --c-id: #4c9dbf;
+  --c-important: #b64cbf;
+  --c-grad--transparent: rgba(255, 255, 255, 0);
+  --c-grad--neutral: rgba(208, 255, 241, 0.5);
+  --c-grad--green: #11ec70;
+  --c-grad--yellow: #ffe93c;
+  --c-grad--red: #ff3535;
   --grid-base: 8px;
   --grid-max-width: 1260px;
-  --font-family-headings: "Raleway", sans-serif;
-  --font-family-text: "IBM Plex Serif", sans-serif;
-  --font-family-code: "Fira Mono", sans-serif;
+  --font-headings: "Raleway", sans-serif;
+  --font-text: "IBM Plex Serif", serif;
+  --font-code: "Fira Mono", monospace;
 }
 
 /*=====  End of Variables  ======*/
@@ -33,24 +37,24 @@
 
 html {
   font-size: calc(var(--grid-base) * 2);
-  font-family: var(--font-family-text);
+  font-family: var(--font-text);
 }
 
 h1 {
-  font-family: var(--font-family-headings);
+  font-family: var(--font-headings);
 }
 
 h2 {
-  font-family: var(--font-family-headings);
+  font-family: var(--font-headings);
 }
 
 h3 {
-  font-family: var(--font-family-headings);
+  font-family: var(--font-headings);
 }
 
 pre,
 code {
-  font-family: var(--font-family-code);
+  font-family: var(--font-code);
 }
 
 html,
@@ -65,8 +69,8 @@ a {
 
 /*=====  End of Browser reset  ======*/
 body {
-  background-color: var(--background-dark);
-  color: var(--text-dark);
+  background-color: var(--c-black);
+  color: var(--c-white);
 }
 
 /*=============================================
@@ -83,6 +87,9 @@ body {
 }
 
 /*=====  End of Container  ======*/
+.header {
+  margin-top: 1em;
+}
 .header .container {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
@@ -101,3 +108,148 @@ body {
   margin-top: 96px;
   grid-area: definition;
 }
+
+/*=============================================
+=            Chart                           =
+=============================================*/
+.chart__scale {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8em;
+}
+.chart__scale .line {
+  width: 80%;
+  position: relative;
+  border: 1px solid var(--c-dark-grey);
+  border-radius: 2px;
+}
+.chart__scale .line:after, .chart__scale .line:before {
+  content: "";
+  position: absolute;
+  width: 0.8em;
+  height: 0.8em;
+  border: solid var(--c-dark-grey);
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  transform-origin: center;
+  border-radius: 2px;
+}
+.chart__scale .line:after {
+  right: 0;
+  transform: rotate(-45deg) matrix(1, 0, 0, 1, 5, -5);
+}
+.chart__scale .line:before {
+  left: 0;
+  transform: rotate(135deg) matrix(1, 0, 0, 1, -5, 5);
+}
+.chart__graph {
+  background: linear-gradient(90deg, var(--c-grad--transparent) 0%, var(--c-grad--neutral) 12%, var(--c-grad--green) 40%, var(--c-grad--yellow) 70%, var(--c-grad--red) 100%);
+  height: 0.8em;
+  width: 100%;
+  border-radius: 0.4em;
+  margin-bottom: 1.2em;
+}
+.chart__scale-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-headings);
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+/*=====  End of Chart  ======*/
+/*=============================================
+=            Examples                         =
+=============================================*/
+.examples {
+  /**
+   *
+   * Cell Code
+   *
+   */
+}
+.examples__title {
+  font-size: 2.5em;
+  margin-bottom: 2rem;
+}
+.examples__description {
+  max-width: 25em;
+  line-height: 1.8;
+  margin-bottom: 2.5em;
+}
+.examples__table {
+  display: flex;
+  flex-wrap: wrap;
+  outline: 1px solid var(--c-dark-grey);
+  outline-offset: -1px;
+}
+.examples__table .cell {
+  flex: 1 20%;
+  padding: 1em;
+  outline: 1px solid var(--c-dark-grey);
+  position: relative;
+  min-height: calc(var(--grid-max-width) / 5);
+}
+.examples__table .cell--legend {
+  flex: 1 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  font-size: 0.8em;
+  line-height: 1.5;
+  min-height: unset;
+  color: var(--c-grey);
+}
+.examples__table .specification-table {
+  display: inline-flex;
+  flex-wrap: wrap;
+  position: absolute;
+  width: 40%;
+  bottom: 1em;
+  right: 1em;
+}
+.examples__table .specification-table * {
+  flex: 1 16.666%;
+  text-align: center;
+}
+.examples__table .specification-table .legend {
+  color: var(--c-grey);
+  font-size: 0.75em;
+  margin-bottom: 0.4em;
+}
+.examples__table .specification-table .num {
+  font-family: var(--font-code);
+  color: var(--c-dark-grey);
+}
+.examples__table .specification-table .num--active {
+  color: var(--c-white);
+}
+.examples .code {
+  line-height: 1.5;
+  color: var(--c-dark-grey);
+}
+.examples .code .e {
+  color: var(--c-element);
+}
+.examples .code .c,
+.examples .code .is {
+  color: var(--c-class);
+}
+.examples .code .id {
+  color: var(--c-id);
+}
+.examples .code .i {
+  color: var(--c-important);
+}
+.examples .code .p {
+  color: var(--c-property);
+}
+.examples .code .v {
+  color: var(--c-value);
+}
+.examples .code .atr {
+  color: var(--c-grey);
+}
+
+/*=====  End of Examples  ======*/

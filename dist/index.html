@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CSS Specificity</title>
     <link rel="preconnect" href="//fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css?family=Fira+Mono:400|IBM+Plex+Serif|Raleway:800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Mono:400|IBM+Plex+Serif|Raleway:500,800" rel="stylesheet">
     <link rel="stylesheet" href="/style.97fcb138.css">
   <script src="/style.97fcb138.js"></script></head>
   <body>
@@ -33,7 +33,7 @@
       </div>
     </header>
     <main class="main" role="main">
-      <div class="container container--grid">
+      <div class="container">
         <div class="chart">
           <div class="chart__scale">
             <span class="low">Low</span> <span class="line"></span>
@@ -56,150 +56,251 @@
             <span class="important"> !important </span>
           </div>
         </div>
+      </div>
+      <div class="container">
         <div class="examples">
           <h2 class="examples__title">Examples</h2>
           <div class="examples__description">
             <p class="paragraph">
               Let us examine some cases in order to understand more about
-              specificity and how to calculate it. Higher number means higher
-              specificity.
+              specificity and how to calculate it.<br>
+              Higher number means higher specificity.
             </p>
           </div>
           <div class="examples__table">
             <div class="cell cell--legend">
               <pre class="universal">
-                      * => Universal selector,
-                           combinators (+ ~ >),
-                           negation pseudo-class (:not())
-                    </pre>
+* => Universal selector,
+     combinators (+ ~ >),
+     negation pseudo-class (:not())
+</pre>
               <pre class="element">
-                      e => Elements,
-                           pseudo-elements
-                    </pre>
+e => Elements,
+     pseudo-elements
+</pre>
               <pre class="classes">
-                      . => Classes,
-                           attributes,
-                           pseudo-classes
-                    </pre>
+. => Classes,
+     attributes,
+     pseudo-classes
+</pre>
               <pre class="id">
-                      # => IDs
-                    </pre>
+# => IDs
+</pre>
               <pre class="inline-style">
-                      “ => Inline styles
-                    </pre>
+“ => Inline styles
+</pre>
               <pre class="important">
-                      ! => !important
-                    </pre>
+! => !important
+</pre>
             </div>
             <div class="cell">
-              <pre class="pre">
-                      <code class="code">
-                        <span class="e">*</span> {
-                          <span class="p">margin</span>: <span class="v">0</span>;
-                        }
-                      </code>
-                    </pre>
+              <pre class="code">
+<span class="e">*</span> { 
+  <span class="p">margin</span>: <span class="v">0</span>; 
+}
+</pre>
               <div class="specification-table">
-                <div class="specification-table__header">
-                  <span class="!">!</span> <span class="is">"</span>
-                  <span class="#">#</span> <span class=".">.</span>
-                  <span class="e">e</span> <span class="*">*</span>
-                </div>
-                <div class="specification-table__row">
-                  <span class="cell">0</span> <span class="cell">0</span>
-                  <span class="cell">0</span> <span class="cell">0</span>
-                  <span class="cell">0</span>
-                  <span class="cell cell--active">0</span>
-                </div>
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num num--active">0</div>
               </div>
             </div>
             <div class="cell">
-              <pre class="pre">
-                      <code class="code">
-                        <span class="e">div</span> {
-                          <span class="p">margin</span>: <span class="v">0</span>;
-                        }
-                      </code>
-                    </pre>
+              <pre class="code">
+<span class="e">div</span> { 
+  <span class="p">margin</span>: <span class="v">0</span>; 
+}
+</pre>
               <div class="specification-table">
-                <div class="specification-table__header">
-                  <span class="!">!</span> <span class="is">"</span>
-                  <span class="#">#</span> <span class=".">.</span>
-                  <span class="e">e</span> <span class="*">*</span>
-                </div>
-                <div class="specification-table__row">
-                  <span class="cell">0</span> <span class="cell">0</span>
-                  <span class="cell">0</span> <span class="cell">0</span>
-                  <span class="cell cell--active">1</span>
-                  <span class="cell cell--active">0</span>
-                </div>
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">0</div>
               </div>
             </div>
             <div class="cell">
-              <pre class="pre">
-                      <code class="code">
-                        <span class="e">div</span> + <span class="e">div</span> {
-                          <span class="p">margin</span>: <span class="v">0</span>;
-                        }
-                      </code>
-                    </pre>
+              <pre class="code">
+<span class="e">div</span> + <span class="e">div</span> { 
+  <span class="p">margin</span>: <span class="v">0</span>; 
+}
+</pre>
               <div class="specification-table">
-                <div class="specification-table__header">
-                  <span class="!">!</span> <span class="is">"</span>
-                  <span class="#">#</span> <span class=".">.</span>
-                  <span class="e">e</span> <span class="*">*</span>
-                </div>
-                <div class="specification-table__row">
-                  <span class="cell">0</span> <span class="cell">0</span>
-                  <span class="cell">0</span> <span class="cell">0</span>
-                  <span class="cell cell--active">2</span>
-                  <span class="cell cell--active">0</span>
-                </div>
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num num--active">2</div>
+                <div class="num num--active">0</div>
               </div>
             </div>
             <div class="cell">
-              <pre class="pre">
-                      <code class="code">
-                        <span class="e">div nav ul li a</span> {
-                          <span class="p">margin</span>: <span class="v">0</span>;
-                        }
-                      </code>
-                    </pre>
+              <pre class="code">
+<span class="e">header nav ul li a</span> { 
+  <span class="p">margin</span>: <span class="v">0</span>; 
+}
+</pre>
               <div class="specification-table">
-                <div class="specification-table__header">
-                  <span class="!">!</span> <span class="is">"</span>
-                  <span class="#">#</span> <span class=".">.</span>
-                  <span class="e">e</span> <span class="*">*</span>
-                </div>
-                <div class="specification-table__row">
-                  <span class="cell">0</span> <span class="cell">0</span>
-                  <span class="cell">0</span> <span class="cell">0</span>
-                  <span class="cell cell--active">5</span>
-                  <span class="cell cell--active">0</span>
-                </div>
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num num--active">5</div>
+                <div class="num num--active">0</div>
               </div>
             </div>
             <div class="cell">
-              <pre class="pre">
-                      <code class="code">
-                        <span class="c">.class</span> {
-                          <span class="p">margin</span>: <span class="v">0</span>;
-                        }
-                      </code>
-                    </pre>
+              <pre class="code">
+<span class="c">.class</span> { 
+  <span class="p">margin</span>: <span class="v">0</span>; 
+}
+</pre>
               <div class="specification-table">
-                <div class="specification-table__header">
-                  <span class="!">!</span> <span class="is">"</span>
-                  <span class="#">#</span> <span class=".">.</span>
-                  <span class="e">e</span> <span class="*">*</span>
-                </div>
-                <div class="specification-table__row">
-                  <span class="cell">0</span> <span class="cell">0</span>
-                  <span class="cell">0</span>
-                  <span class="cell cell--active">1</span>
-                  <span class="cell cell--active">0</span>
-                  <span class="cell cell--active">0</span>
-                </div>
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">0</div>
+                <div class="num num--active">0</div>
+              </div>
+            </div>
+            <div class="cell">
+              <pre class="code">
+<span class="atr">[</span><span class="c">type</span><span class="atr">=”text”]</span> {
+  <span class="p">margin</span>: <span class="v">0</span>;
+}
+</pre>
+              <div class="specification-table">
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">0</div>
+                <div class="num num--active">0</div>
+              </div>
+            </div>
+            <div class="cell">
+              <pre class="code">
+<span class="e">input</span><span class="atr">[</span><span class="c">type</span><span class="atr">=”text”]</span> { 
+  <span class="p">margin</span>: <span class="v">0</span>; 
+}
+</pre>
+              <div class="specification-table">
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">0</div>
+              </div>
+            </div>
+            <div class="cell">
+              <pre class="code">
+<span class="e">div</span><span class="atr">[</span><span class="c">id</span><span class="atr">="id"]</span> {
+  <span class="p">margin</span>: <span class="v">0</span>;
+}
+</pre>
+              <div class="specification-table">
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">0</div>
+              </div>
+            </div>
+            <div class="cell">
+              <pre class="code">
+<span class="e">div</span><span class="c">.class</span> {
+  <span class="p">margin</span>: <span class="v">0</span>;
+}
+</pre>
+              <div class="specification-table">
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">0</div>
+              </div>
+            </div>
+            <div class="cell">
+              <pre class="code">
+<span class="e">div</span><span class="c">:first-child</span> > <span class="e">p</span> { 
+  <span class="p">margin</span>: <span class="v">0</span>; 
+}
+</pre>
+              <div class="specification-table">
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">2</div>
+                <div class="num num--active">0</div>
               </div>
             </div>
           </div>
