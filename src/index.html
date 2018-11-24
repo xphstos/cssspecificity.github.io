@@ -26,12 +26,10 @@
             applied. Specificity is based on the matching rules which are
             composed of different sorts of CSS selectors.
           </p>
-          <p class="paragraph">
+          <p class="paragraph paragraph--source">
             <small class="small">
-              <a href="#" class="link"
-                >MDN Web Docs. (2018). Specificity. Available at:
-                https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity</a
-              >
+              Source: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" class="link" target="_blank"
+                >MDN Web Docs. (2018). Specificity.</a>
             </small>
           </p>
         </div>
@@ -65,7 +63,7 @@
       <div class="container">
         <div class="examples">
           <h2 class="examples__title">Examples</h2>
-          <div class="examples__description">
+          <div class="examples__content">
             <p class="paragraph">
               Let us examine some cases in order to understand more about
               specificity and how to calculate it.<br />
@@ -314,6 +312,223 @@ e => Elements,
                 <div class="num num--active">0</div>
               </div>
             </div>
+            <div class="cell">
+              <pre class="code">
+<span class="c">.class</span><span class="atr">[</span><span class="c">type</span><span class="atr">=”text”]</span> {
+  <span class="p">margin</span>: <span class="v">0</span>;
+}
+</pre>
+              <div class="specification-table">
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num num--active">2</div>
+                <div class="num num--active">0</div>
+                <div class="num num--active">0</div>
+              </div>
+            </div>
+            <div class="cell">
+              <pre class="code">
+<span class="c">.class</span> <span class="e">div</span><span class="atr">:not(</span><span class="c">.class</span><span class="atr">)</span> { 
+  <span class="p">margin</span>: <span class="v">0</span>; 
+}
+</pre>
+              <div class="specification-table">
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num num--active">2</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">0</div>
+              </div>
+            </div>
+            <div class="cell">
+              <pre class="code">
+<span class="id">#id</span> {
+  <span class="p">margin</span>: <span class="v">0</span>;
+}
+</pre>
+              <div class="specification-table">
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">0</div>
+                <div class="num num--active">0</div>
+                <div class="num num--active">0</div>
+              </div>
+            </div>
+            <div class="cell">
+              <pre class="code">
+<span class="id">#id</span> <span class="c">.class</span> <span class="e">p</span> + <span class="e">p</span> {
+  <span class="p">margin</span>: <span class="v">0</span>;
+}
+</pre>
+              <div class="specification-table">
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">2</div>
+                <div class="num num--active">0</div>
+              </div>
+            </div>
+            <div class="cell">
+              <pre class="code">
+<span class="id">#id</span> <span class="id">#id</span> {
+  <span class="p">margin</span>: <span class="v">0</span>;
+}
+</pre>
+              <div class="specification-table">
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num">0</div>
+                <div class="num">0</div>
+                <div class="num num--active">2</div>
+                <div class="num num--active">0</div>
+                <div class="num num--active">0</div>
+                <div class="num num--active">0</div>
+              </div>
+            </div>
+            <div class="cell">
+              <pre class="code">
+<span class="id">&lt;</span><span class="e">div</span> <span class="is">style</span>="<span class="p">margin</span>: <span class="v">0</span>"<span class="id">&gt;</span> {
+  ...
+<span class="id">&lt;&sol;</span><span class="e">div</span><span class="id">&gt;</span>
+</pre>
+              <div class="specification-table">
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num">0</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">0</div>
+                <div class="num num--active">0</div>
+                <div class="num num--active">0</div>
+                <div class="num num--active">0</div>
+              </div>
+            </div>
+            <div class="cell">
+              <pre class="code">
+<span class="e">div</span> {
+  <span class="p">margin</span>: <span class="v">0</span> <span class="i">!important</span>;
+}
+</pre>
+              <div class="specification-table">
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">0</div>
+                <div class="num num--active">0</div>
+                <div class="num num--active">0</div>
+                <div class="num num--active">0</div>
+                <div class="num num--active">0</div>
+              </div>
+            </div>
+            <div class="cell">
+              <pre class="code">
+<span class="id">&lt;</span><span class="e">div</span> <span class="is">style</span>="<span class="p">margin</span>: <span class="v">0</span> <span class="i">!important</span>"<span class="id">&gt;</span> {
+  ...
+<span class="id">&lt;&sol;</span><span class="e">div</span><span class="id">&gt;</span>
+</pre>
+              <div class="specification-table">
+                <div class="legend">!</div>
+                <div class="legend">"</div>
+                <div class="legend">#</div>
+                <div class="legend">.</div>
+                <div class="legend">e</div>
+                <div class="legend">*</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">1</div>
+                <div class="num num--active">0</div>
+                <div class="num num--active">0</div>
+                <div class="num num--active">0</div>
+                <div class="num num--active">0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="takeaway">
+          <h2 class="takeaway__title">Takeaway</h2>
+          <div class="takeaway__content">
+            <p class="paragraph">
+              As a rule of thumb, we use the universal selector (*) and element selectors to overwrite browser styles. Think of it
+              as a reset the to the default styles given to elements by browsers. Remember, not all browsers have the same styles
+              for the same elements.<br />
+              Also it’s worth mentioning that while <code class="code"><span class="atr">:not()</span></code> counts as 0 the
+              selector inside it, adds to the overall specificity!
+            </p>
+            <p class="paragraph">
+              Another important (pun intented) thing to notice is the use of <code class="code"><span class="i">!important</span></code>
+              in our styles. We must avoid them at all costs because it’s a clear indicator that something is going wrong.
+              We might be able to get away with them in small projects but if we decide to scale it will come back and bite us
+              sometime along the way.
+            </p>
+            <p class="paragraph">
+              We also need to use IDs sparingly, we usually do in order to target elements with JavaScript.
+              The same goes for inline styles too. We must not add them by hand but it’s ok to add them or overide them via
+              JavaScript.
+            </p>
+            <p class="paragraph">
+              We mostly talked about what type of selectors we shouldn’t use or when we should them. Let’s see what selectors we
+              “should” use.
+            </p>
+            <p class="paragraph">
+              Again, I want to clarify that there are no absolute rules but if we want to keep our code clean and easy to maintain
+              we can restrict ourselves to get there.
+            </p>
+            <p class="paragraph">
+              As we saw in the diagram above the green area is covering a small part of the elements selectors (e) and it goes all
+              the way up to the IDs, which are ok to use but with caution. In terms of specificity this translates to levels 100,
+              200 or 300.
+            </p>
+            <p class="paragraph">
+              This means we need to be specific but not too much! We want to style our elements using only classes, along with
+              pseudo-classes or attribute selectors and have no more than 2 levels of nesting. Again, this translates to 100 in
+              specificity level.<br />
+              In most cases this is not possible, so don’t go overboard with it.
+            </p>
+            <p class="paragraph">
+              Sounds difficult? Fear not because we have some tools for that. There are many CSS pre-processors like <strong>SCSS/SASS</strong> or
+              <strong>Stylus</strong> but more importantly we have methodologies like <strong>BEM</strong> or <strong>SMACSS</strong>. Methodologies will help us structure our code
+              in a way that stays clean, readable and easy to maintain with CSS especially with the help of preprocessors.
+            </p>
           </div>
         </div>
       </div>

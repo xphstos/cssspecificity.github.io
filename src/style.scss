@@ -25,7 +25,7 @@
 
   --font-headings: "Raleway", sans-serif;
   --font-text: "IBM Plex Serif", serif;
-  --font-code: "Fira Mono", monospace;
+  --font-code: "Fira Code Retina", "Fira Code", "Fira Mono", monospace;
 }
 
 /*=====  End of Variables  ======*/
@@ -39,6 +39,11 @@
   margin: 0;
   padding: 0;
   // outline: 1px solid red;
+}
+
+::selection {
+  color: var(--c-black);
+  background-color: var(--c-dark-grey);
 }
 
 html {
@@ -67,11 +72,16 @@ a {
   color: inherit;
 }
 
+small {
+  font-size: 0.9em;
+}
+
 /*=====  End of Browser reset  ======*/
 
 body {
   background-color: var(--c-black);
   color: var(--c-white);
+  line-height: 1.6;
 
   // @supports (-moz-appearance: meterbar) {
   //   overflow-x: hidden;
@@ -108,6 +118,7 @@ body {
   &-title {
     font-size: 4.5em;
     grid-area: header;
+    line-height: 1;
 
     .css,
     .specificity {
@@ -118,6 +129,44 @@ body {
   &-description {
     margin-top: 96px;
     grid-area: definition;
+    text-align: justify;
+
+    .paragraph {
+      &--source {
+        margin-top: 2em;
+      }
+
+      .link {
+        color: var(--c-dark-grey);
+        margin-left: 0.5em;
+        position: relative;
+        display: inline-block;
+        transition: color 0.2s ease;
+
+        &:after {
+          content: "";
+          position: absolute;
+          width: calc(100% + 1em);
+          height: calc(100% + 0.2em);
+          top: -0.1em;
+          left: -0.5em;
+          background-color: var(--c-white);
+          transform-origin: center bottom;
+          transform: matrix(1, 0, 0, 0.001, 0, 0);
+          z-index: -1;
+          transition: transform 0.2s ease-in-out;
+        }
+
+        &:hover,
+        &:active {
+          color: var(--c-black);
+
+          &:after {
+            transform: matrix(1, 0, 0, 1, 0, 0);
+          }
+        }
+      }
+    }
   }
 }
 
@@ -199,10 +248,11 @@ body {
     margin-bottom: 2rem;
   }
 
-  &__description {
+  &__content {
     max-width: 25em;
-    line-height: 1.8;
     margin-bottom: 2.5em;
+    font-size: 1.15em;
+    text-align: justify;
   }
 
   &__table {
@@ -259,40 +309,83 @@ body {
       }
     }
   }
+}
 
-  /**
-   *
-   * Cell Code
-   *
-   */
+/**
+*
+* Cell Code
+*
+*/
 
-  .code {
-    line-height: 1.5;
-    color: var(--c-dark-grey);
+.code {
+  line-height: 1.8;
+  color: var(--c-dark-grey);
+  font-size: 0.9em;
 
-    .e {
-      color: var(--c-element);
+  .e {
+    color: var(--c-element);
+  }
+  .c,
+  .is {
+    color: var(--c-class);
+  }
+  .id {
+    color: var(--c-id);
+  }
+  .i {
+    color: var(--c-important);
+  }
+  .p {
+    color: var(--c-property);
+  }
+  .v {
+    color: var(--c-value);
+  }
+  .atr {
+    color: var(--c-grey);
+  }
+}
+/*=====  End of Examples  ======*/
+
+/*=============================================
+=            Takeaway                         =
+=============================================*/
+
+.takeaway {
+  &__title {
+    font-size: 2.5em;
+    margin-bottom: 2rem;
+  }
+
+  &__content {
+    columns: 2;
+    column-gap: 2.5em;
+    font-size: 1.15em;
+
+    .paragraph + .paragraph {
+      margin-top: 2em;
     }
-    .c,
-    .is {
-      color: var(--c-class);
-    }
-    .id {
-      color: var(--c-id);
-    }
-    .i {
-      color: var(--c-important);
-    }
-    .p {
-      color: var(--c-property);
-    }
-    .v {
-      color: var(--c-value);
-    }
-    .atr {
-      color: var(--c-grey);
+
+    .paragraph {
+      text-align: justify;
+
+      .code {
+        position: relative;
+        margin: 0 0.5em;
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: -0.25em;
+          left: -0.5em;
+          width: calc(100% + 1em);
+          height: calc(100% + 0.5em);
+          background-color: var(--c-dark);
+          z-index: -1;
+        }
+      }
     }
   }
 }
 
-/*=====  End of Examples  ======*/
+/*=====  End of Takeaway ======*/
