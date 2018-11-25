@@ -105,7 +105,32 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   // Override the current require with this new one
   return newRequire;
 })({"index.js":[function(require,module,exports) {
-console.log("hello world");
+var BODY;
+document.addEventListener("DOMContentLoaded", function () {
+  BODY = document.querySelector("body");
+});
+window.addEventListener("load", function () {
+  fadeIn(BODY);
+});
+
+function fadeIn(elem) {
+  var opacity = 0;
+
+  function increase() {
+    opacity += 0.05;
+
+    if (opacity >= 1) {
+      elem.style.opacity = 1;
+      cancelAnimationFrame(increase);
+      return true;
+    }
+
+    elem.style.opacity = opacity;
+    requestAnimationFrame(increase);
+  }
+
+  increase();
+}
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -133,7 +158,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "10034" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "2220" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
