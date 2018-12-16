@@ -89,10 +89,6 @@ body {
   transition: opacity 0.2s ease-out;
 }
 
-.footer {
-  margin-top: calc(var(--grid-base) * 18);
-}
-
 /*=============================================
 =                  Container                  =
 =============================================*/
@@ -101,6 +97,12 @@ body {
   margin-bottom: calc(var(--grid-base) * 9);
   padding: 0 1rem;
   max-width: calc(var(--grid-max-width) + 2rem);
+}
+@media screen and (max-width: 1292px) {
+  .container {
+    padding: 0 2rem;
+    max-width: calc(var(--grid-max-width) + 4rem);
+  }
 }
 .container--flex {
   display: flex;
@@ -113,26 +115,73 @@ body {
 .header {
   margin-top: 1em;
 }
+@media screen and (max-width: 1292px) {
+  .header {
+    margin-top: 2em;
+  }
+}
 .header .container {
   justify-content: space-between;
+}
+@media screen and (max-width: 980px) {
+  .header .container {
+    flex-direction: column;
+  }
 }
 .header-title {
   flex: 1 50%;
   font-size: 4.5em;
   line-height: 1;
 }
+@media screen and (max-width: 980px) {
+  .header-title {
+    margin-bottom: 1em;
+  }
+}
+@media screen and (max-width: 475px) {
+  .header-title {
+    font-size: 3.5em;
+  }
+}
 .header-title .css,
 .header-title .specificity {
   display: block;
 }
+@media screen and (max-width: 475px) {
+  .header-title .css,
+.header-title .specificity {
+    display: inline-block;
+    hyphens: manual;
+    -webkit-hyphenate-character: "-";
+    word-break: break-all;
+  }
+}
 .header-description {
   flex: 1 50%;
   margin-top: 4.5em;
-  text-align: justify;
   font-size: 1.2em;
+}
+@media screen and (max-width: 980px) {
+  .header-description {
+    margin-top: 0;
+    text-align: left;
+  }
+}
+.header-description .paragraph {
+  text-align: justify;
+}
+@media screen and (max-width: 768px) {
+  .header-description .paragraph {
+    text-align: left;
+  }
 }
 .header-description .paragraph--source {
   margin-top: 2em;
+}
+@media screen and (max-width: 980px) {
+  .header-description .paragraph--source {
+    margin-top: 1em;
+  }
 }
 .header-description .paragraph .link {
   color: var(--c-dark-grey);
@@ -141,41 +190,72 @@ body {
   display: inline-block;
   transition: color 0.2s ease;
 }
+@media screen and (max-width: 378px) {
+  .header-description .paragraph .link {
+    margin-left: 0;
+  }
+}
 .header-description .paragraph .link:after {
   content: "";
   position: absolute;
-  width: calc(100% + 1em);
+  width: 100%;
   height: calc(100% + 0.2em);
   top: -0.1em;
-  left: -0.5em;
-  background-color: var(--c-white);
+  left: 0;
+  background-color: var(--c-dark-grey);
   transform-origin: center bottom;
   transform: matrix(1, 0, 0, 0.001, 0, 0);
   z-index: -1;
   transition: transform 0.2s ease-in-out;
 }
 .header-description .paragraph .link:hover, .header-description .paragraph .link:active {
-  color: var(--c-black);
+  color: var(--c-white);
 }
 .header-description .paragraph .link:hover:after, .header-description .paragraph .link:active:after {
-  transform: matrix(1, 0, 0, 1, 0, 0);
+  transform: matrix(1, 0, 0, 0.05, 0, 0);
+  background-color: var(--c-grad--green);
 }
 
 /*=====  End of Header  ======*/
 /*=============================================
 =            Chart                           =
 =============================================*/
+@media screen and (max-width: 768px) {
+  .chart {
+    display: flex;
+  }
+  .chart > * + * {
+    margin-left: 1.5em;
+  }
+}
+.chart__title {
+  font-size: 2.5em;
+  margin-bottom: 2rem;
+}
 .chart__scale {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.8em;
 }
+@media screen and (max-width: 768px) {
+  .chart__scale {
+    margin-bottom: 0;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 .chart__scale .line {
   width: 80%;
   position: relative;
   border: 1px solid var(--c-dark-grey);
   border-radius: 2px;
+}
+@media screen and (max-width: 768px) {
+  .chart__scale .line {
+    height: 70%;
+    width: 1px;
+  }
 }
 .chart__scale .line:after, .chart__scale .line:before {
   content: "";
@@ -192,16 +272,39 @@ body {
   right: 0;
   transform: rotate(-45deg) matrix(1, 0, 0, 1, 5, -5);
 }
+@media screen and (max-width: 768px) {
+  .chart__scale .line:after {
+    transform: rotate(45deg) matrix(1, 0, 0, 1, -5, 5);
+    bottom: 0;
+    right: auto;
+  }
+}
 .chart__scale .line:before {
   left: 0;
   transform: rotate(135deg) matrix(1, 0, 0, 1, -5, 5);
 }
+@media screen and (max-width: 768px) {
+  .chart__scale .line:before {
+    transform: rotate(225deg) matrix(1, 0, 0, 1, 5, -5);
+    top: 0;
+    left: auto;
+  }
+}
 .chart__graph {
-  background: linear-gradient(90deg, var(--c-grad--transparent) 0%, var(--c-grad--neutral) 12%, var(--c-grad--green) 40%, var(--c-grad--yellow) 70%, var(--c-grad--red) 100%);
+  --graph-orientation: 90deg;
+  background: linear-gradient(var(--graph-orientation), var(--c-grad--transparent) 0%, var(--c-grad--neutral) 12%, var(--c-grad--green) 40%, var(--c-grad--yellow) 70%, var(--c-grad--red) 100%);
   height: 0.8em;
   width: 100%;
   border-radius: 0.4em;
   margin-bottom: 1.2em;
+}
+@media screen and (max-width: 768px) {
+  .chart__graph {
+    --graph-orientation: 180deg;
+    height: auto;
+    width: 0.8em;
+    margin-bottom: 0;
+  }
 }
 .chart__scale-labels {
   display: flex;
@@ -209,6 +312,14 @@ body {
   font-family: var(--font-headings);
   font-weight: 400;
   letter-spacing: 1px;
+}
+@media screen and (max-width: 768px) {
+  .chart__scale-labels {
+    flex-direction: column;
+  }
+  .chart__scale-labels > * + * {
+    margin-top: 2em;
+  }
 }
 
 /*=====  End of Chart  ======*/
@@ -225,6 +336,11 @@ body {
   font-size: 1.15em;
   text-align: justify;
 }
+@media screen and (max-width: 768px) {
+  .examples__content {
+    text-align: left;
+  }
+}
 .examples__table {
   display: flex;
   flex-wrap: wrap;
@@ -238,6 +354,23 @@ body {
   position: relative;
   min-height: calc(var(--grid-max-width) / 5);
 }
+@media screen and (max-width: 1292px) {
+  .examples__table .cell {
+    flex: 1 33%;
+  }
+}
+@media screen and (max-width: 794px) {
+  .examples__table .cell {
+    flex: 1 50%;
+  }
+}
+@media screen and (max-width: 560px) {
+  .examples__table .cell {
+    flex: 1 100%;
+    min-height: calc(var(--grid-max-width) / 7);
+    overflow-x: auto;
+  }
+}
 .examples__table .cell--legend {
   flex: 1 100%;
   display: flex;
@@ -247,6 +380,11 @@ body {
   line-height: 1.5;
   min-height: unset;
   color: var(--c-grey);
+}
+@media screen and (max-width: 980px) {
+  .examples__table .cell--legend {
+    display: none;
+  }
 }
 .examples__table .specification-table {
   display: inline-flex;
@@ -306,6 +444,19 @@ body {
 .code .atr {
   color: var(--c-grey);
 }
+@media screen and (max-width: 392px) {
+  .code--hidden-in-mobile {
+    display: none;
+  }
+}
+.code--mobile {
+  display: none;
+}
+@media screen and (max-width: 392px) {
+  .code--mobile {
+    display: block;
+  }
+}
 
 /*=====  End of Examples  ======*/
 /*=============================================
@@ -320,11 +471,21 @@ body {
   column-gap: 2.5em;
   font-size: 1.15em;
 }
+@media screen and (max-width: 768px) {
+  .takeaway__content {
+    columns: 1;
+  }
+}
 .takeaway__content .paragraph + .paragraph {
   margin-top: 2em;
 }
 .takeaway__content .paragraph {
   text-align: justify;
+}
+@media screen and (max-width: 768px) {
+  .takeaway__content .paragraph {
+    text-align: left;
+  }
 }
 .takeaway__content .paragraph .code {
   position: relative;
@@ -347,11 +508,37 @@ body {
 =============================================*/
 .footer {
   color: var(--c-dark-grey);
+  margin-top: calc(var(--grid-base) * 18);
+}
+@media screen and (max-width: 1292px) {
+  .footer {
+    margin-bottom: 2em;
+  }
+}
+@media screen and (max-width: 768px) {
+  .footer {
+    margin-top: calc(var(--grid-base) * 8);
+    margin-bottom: 0;
+  }
 }
 .footer .container {
-  padding: 2em 1rem;
-  border-top: 1px solid var(--c-dark-grey);
   margin-bottom: 0;
+}
+.footer .credits {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 0;
+  border-top: 1px solid var(--c-dark-grey);
+}
+@media screen and (max-width: 375px) {
+  .footer .credits {
+    flex-wrap: wrap;
+  }
+  .footer .credits * {
+    flex: 1 100%;
+    margin: 0.25em 0;
+  }
 }
 
 /*=====  End of Footer  ======*/

@@ -33,6 +33,7 @@
     </header>
     <main class="main">
       <div class="container">
+        <h2 class="chart__title">Chart</h2>
         <div class="chart">
           <div class="chart__scale">
             <span class="low">Low</span> <span class="line"></span>
@@ -450,8 +451,14 @@ e => Elements,
               </div>
             </div>
             <div class="cell">
-              <pre class="code">
+              <pre class="code code--hidden-in-mobile">
 <span class="id">&lt;</span><span class="e">div</span> <span class="is">style</span>="<span class="p">margin</span>: <span class="v">0</span> <span class="i">!important</span>"<span class="id">&gt;</span>
+  ...
+<span class="id">&lt;&sol;</span><span class="e">div</span><span class="id">&gt;</span>
+</pre>
+              <pre class="code code--mobile">
+<span class="id">&lt;</span><span class="e">div</span>
+  <span class="is">style</span>="<span class="p">margin</span>: <span class="v">0</span> <span class="i">!important</span>"<span class="id">&gt;</span>
   ...
 <span class="id">&lt;&sol;</span><span class="e">div</span><span class="id">&gt;</span>
 </pre>
@@ -525,7 +532,9 @@ e => Elements,
     </main>
     <footer class="footer">
       <div class="container">
-        Chris Gotsikas / 2018
+        <div class="credits">
+          <div class="left">CSS Specificity</div><div class="right">Chris Gotsikas &copy; <span id="date"></span></div>
+        </div>
       </div>
     </footer>
   </body>
